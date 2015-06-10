@@ -46,6 +46,8 @@
             android:value="GZWtu8vGldmNoSRzhGz57AG6" />
 
         <activity android:name=".activity.LocationActivity" />
+
+        <activity android:name=".weather.WeatherActivity"/>
     </application>
 
 </manifest>

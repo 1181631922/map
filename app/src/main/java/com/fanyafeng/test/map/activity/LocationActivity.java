@@ -1,5 +1,8 @@
 package com.fanyafeng.test.map.activity;
 
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +13,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.location.LocationClientOption.LocationMode;
 import com.fanyafeng.test.map.R;
 import com.fanyafeng.test.map.app.LocationApplication;
 
@@ -115,15 +114,15 @@ public class LocationActivity extends Activity{
 
 	private void InitLocation(){
 		LocationClientOption option = new LocationClientOption();
-		option.setLocationMode(tempMode);//���ö�λģʽ
-		option.setCoorType(tempcoor);//���صĶ�λ����ǰٶȾ�γ�ȣ�Ĭ��ֵgcj02
+		option.setLocationMode(tempMode);//设置定位模式
+		option.setCoorType(tempcoor);//返回的定位结果是百度经纬度，默认值gcj02
 		int span=1000;
 		try {
 			span = Integer.valueOf(frequence.getText().toString());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		option.setScanSpan(span);//���÷���λ����ļ��ʱ��Ϊ5000ms
+		option.setScanSpan(span);//设置发起定位请求的间隔时间为5000ms
 		option.setIsNeedAddress(checkGeoLocation.isChecked());
 		mLocationClient.setLocOption(option);
 	}

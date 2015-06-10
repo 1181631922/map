@@ -10,9 +10,10 @@ import android.widget.Button;
 
 import com.fanyafeng.test.map.BaseActivity;
 import com.fanyafeng.test.map.R;
+import com.fanyafeng.test.map.weather.WeatherActivity;
 
 public class MainActivity extends BaseActivity {
-    private Button location;
+    private Button location,mylocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class MainActivity extends BaseActivity {
     private void initView() {
         location = (Button) findViewById(R.id.location);
         location.setOnClickListener(this);
+        mylocation = (Button) findViewById(R.id.mylocation);
+        mylocation.setOnClickListener(this);
     }
 
     private void initData() {
@@ -38,6 +41,10 @@ public class MainActivity extends BaseActivity {
             case R.id.location:
                 Intent intent = new Intent(MainActivity.this, LocationActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.mylocation:
+                Intent intent1 = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(intent1);
                 break;
         }
     }

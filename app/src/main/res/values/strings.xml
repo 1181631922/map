@@ -28,4 +28,7 @@
 		501～700：key验证失败\n</string>
     <string name="qa_callback">问题反馈方法</string>
     <string name="qa_callback_mail">mapapi@baidu.com</string>
+    <string name="content_description">contentDescription</string>
+    <string name="request">重新定位</string>
+    <string name="request_poi">请求定位POI</string>
 </resources>

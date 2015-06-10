@@ -5,4 +5,25 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="TextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!--自定义titlebar-->
+    <style name="XTheme" parent="android:Theme.Light">
+        <!-- Window attributes -->
+        <item name="android:windowTitleBackgroundStyle">@style/StatusBarBackground</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleSize">41dp</item>
+        <item name="android:actionModeBackground">@color/white</item>
+        <item name="android:backgroundDimAmount">@color/white</item>
+        <item name="android:backgroundDimEnabled">@color/white</item>
+        <item name="android:backgroundStacked">@color/white</item>
+    </style>
+
+    <style name="StatusBarBackground">
+        <item name="android:background">@null</item>
+    </style>
+
 </resources>

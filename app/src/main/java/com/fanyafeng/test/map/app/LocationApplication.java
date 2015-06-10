@@ -11,17 +11,17 @@ import android.util.Log;
 import android.widget.TextView;
 
 /**
- * ��Application
- */
+* ��Application
+*/
 public class LocationApplication extends Application {
 	public LocationClient mLocationClient;
 	public GeofenceClient mGeofenceClient;
 	public MyLocationListener mMyLocationListener;
-	
+
 	public TextView mLocationResult,logMsg;
 	public TextView trigger,exit;
 	public Vibrator mVibrator;
-	
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -29,20 +29,20 @@ public class LocationApplication extends Application {
 		mMyLocationListener = new MyLocationListener();
 		mLocationClient.registerLocationListener(mMyLocationListener);
 		mGeofenceClient = new GeofenceClient(getApplicationContext());
-		
-		
+
+
 		mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
 	}
 
-	
+
 	/**
 	 * ʵ��ʵλ�ص�����
 	 */
-	public class MyLocationListener implements BDLocationListener {
+    public class MyLocationListener implements BDLocationListener {
 
 		@Override
 		public void onReceiveLocation(BDLocation location) {
-			//Receive Location 
+			//Receive Location
 			StringBuffer sb = new StringBuffer(256);
 			sb.append("time : ");
 			sb.append(location.getTime());
@@ -76,8 +76,8 @@ public class LocationApplication extends Application {
 
 
 	}
-	
-	
+
+
 	/**
 	 * ��ʾ�����ַ�
 	 * @param str
@@ -90,11 +90,6 @@ public class LocationApplication extends Application {
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * �߾��ȵ���Χ���ص�
-	 * @author jpren
-	 *
-	 */
-	
+
+
 }

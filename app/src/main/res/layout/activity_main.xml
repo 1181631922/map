@@ -18,5 +18,10 @@
             android:text="百度location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/mylocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="利用百度地图定位当前地点"/>
     </LinearLayout>
 </RelativeLayout>
