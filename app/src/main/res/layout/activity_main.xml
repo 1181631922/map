@@ -23,5 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="利用百度地图定位当前地点"/>
+        <Button
+            android:id="@+id/mycustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义天气查询"/>
     </LinearLayout>
 </RelativeLayout>

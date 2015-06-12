@@ -13,12 +13,13 @@ import com.fanyafeng.test.map.R;
 import com.fanyafeng.test.map.weather.WeatherActivity;
 
 public class MainActivity extends BaseActivity {
-    private Button location,mylocation;
+    private Button location,mylocation,mycustom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        isShowIcon(false);
         initView();
         initData();
     }
@@ -28,6 +29,8 @@ public class MainActivity extends BaseActivity {
         location.setOnClickListener(this);
         mylocation = (Button) findViewById(R.id.mylocation);
         mylocation.setOnClickListener(this);
+        mycustom = (Button) findViewById(R.id.mycustom);
+        mycustom.setOnClickListener(this);
     }
 
     private void initData() {
@@ -45,6 +48,10 @@ public class MainActivity extends BaseActivity {
             case R.id.mylocation:
                 Intent intent1 = new Intent(MainActivity.this, WeatherActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.mycustom:
+                Intent intent2 = new Intent(MainActivity.this, MyCustomActivity.class);
+                startActivity(intent2);
                 break;
         }
     }
@@ -69,5 +76,9 @@ public class MainActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void isBack() {
     }
 }
