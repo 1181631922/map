@@ -83,6 +83,11 @@ public class MyActivity extends BaseActivity {
         myLocationClient.setOnLocationListener(new LocationListener());
     }
 
+    /**
+     * 多线程
+     * 继承父类thread覆盖run方法
+     * 在类中可以进行自定义构造方法进行传参
+     */
     class LoadData extends Thread {
         public LoadData(String city) {
             super(city);
@@ -92,6 +97,19 @@ public class MyActivity extends BaseActivity {
             loadData(this.getName());
         }
     }
+
+    /**
+     * 这个是第二种方法，没试过传参
+     * Thread loadThread = new Thread(new LoadThread());
+     * loadThread.start();
+     *
+     * class LoadThread implements Runnable {
+     *
+     * @Override public void run() {
+     * initData(k);
+     * }
+     * }
+     */
 
     private void loadData(String city) {
         String path = "http://api.map.baidu.com/telematics/v3/weather?location=" + city + "&output=json&ak=640f3985a6437dad8135dae98d775a09";
@@ -167,8 +185,8 @@ public class MyActivity extends BaseActivity {
                     break;
                 case 1:
                     error.setText("返回的error值：" + err);
-                    city.setText("当前城市："+currentCity);
-                    pm.setText("当前的pm值："+pm25);
+                    city.setText("当前城市：" + currentCity);
+                    pm.setText("当前的pm值：" + pm25);
                     break;
                 case 2:
                     date_0.setText(date0);
