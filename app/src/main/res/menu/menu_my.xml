@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.fanyafeng.test.map.myweather.MyActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:title="设置"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/refresh_loading"
+        android:icon="@color/black"
+        android:showAsAction="always"
+        android:title="刷新"/>
+
+
+</menu>

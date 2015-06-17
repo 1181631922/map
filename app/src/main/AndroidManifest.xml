@@ -52,6 +52,10 @@
             android:name=".activity.MyCustomActivity"
             android:label="@string/title_activity_my_custom" >
         </activity>
+        <activity
+            android:name=".myweather.MyActivity"
+            android:label="@string/title_activity_my" >
+        </activity>
     </application>
 
 </manifest>

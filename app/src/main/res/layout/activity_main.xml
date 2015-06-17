@@ -28,5 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="自定义天气查询"/>
+        <Button
+            android:id="@+id/myweather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="适配更多手机，解决新手机定位bug"/>
     </LinearLayout>
 </RelativeLayout>

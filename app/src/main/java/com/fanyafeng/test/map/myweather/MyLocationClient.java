@@ -1,72 +1,59 @@
-package com.fanyafeng.test.map.weather;
+package com.fanyafeng.test.map.myweather;
+
+import android.content.Context;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.fanyafeng.test.map.app.GlobalConstantsApp;
 import com.fanyafeng.test.map.util.L;
 
-import android.content.Context;
-import android.util.Log;
+public class MyLocationClient {
 
-public class BDLocationClient {
+    private Context mContext;
+    private LocationClient mLocationClient = null;
+    private BDLocationListener myListener = new MyLocationListener();
+    private OnLocationListener mLoactionListener = null;
 
-	private Context mContext;
-	private LocationClient mLocationClient = null;
-	private BDLocationListener myListener = new MyLocationListener();
-	private OnLocationListener mLoactionListener = null;
+    public MyLocationClient(Context context) {
+        mContext = context;
+        initLocation();
+    }
 
-	public BDLocationClient(Context context) {
-		mContext = context;
-		initLocation();
-	}
-
-	private void initLocation() {
-		mLocationClient = new LocationClient(mContext); // 声明LocationClient类
-//		mLocationClient.setAccessKey("8mrnaFzKu3DoduLnWuB5Lt2w"); // V4.1
-		// mLocationClient.setAK("8mrnaFzKu3DoduLnWuB5Lt2w"); //V4.0
-		mLocationClient.registerLocationListener(myListener); // 声明LocationClient类
-		setLocationOption();
-		mLocationClient.start();//  开始定位
+    private void initLocation() {
+        mLocationClient = new LocationClient(mContext); // 声明LocationClient类
+        mLocationClient.registerLocationListener(myListener); // 声明LocationClient类
+        setLocationOption();
+        mLocationClient.start();//  开始定位
         L.d("[MyLocationClient]->initLocation");
     }
 
-	public void stopLocation() {
-		mLocationClient.stop();// 停止定位
-	}
+    public void stopLocation() {
+        mLocationClient.stop();// 停止定位
+    }
 
-	public void requestLocation() {
-		if (mLocationClient != null && mLocationClient.isStarted())
-			mLocationClient.requestLocation();
-		else
-        L.d("locClient is null or not started");
-	}
+    public void requestLocation() {
+        if (mLocationClient != null && mLocationClient.isStarted())
+            mLocationClient.requestLocation();
+        else
+            L.d("locClient is null or not started");
+    }
 
-	public void requestPoi() {
-//		if (mLocationClient != null && mLocationClient.isStarted())
-//			mLocationClient.requestPoi();
-	}
 
-	/**
-	 * ������ز���
-	 */
-	private void setLocationOption() {
-		LocationClientOption option = new LocationClientOption();
-		option.setOpenGps(true);
-		option.setIsNeedAddress(true);// 返回的定位结果包含地址信息
-//		option.setAddrType("all");// 返回的定位结果包含地址信息
-		option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度,默认值gcj02
-		option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
-//		option.disableCache(true);// 禁止启用缓存定位
-//		option.setPoiNumber(5); // 最多返回POI个数
-//		option.setPoiDistance(1000); //poi查询距离
-//		option.setPoiExtraInfo(true); // 是否需要POI的电话和地址等详细信息
-		mLocationClient.setLocOption(option);
-	}
+    /**
+     * ������ز���
+     */
+    private void setLocationOption() {
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true);
+        option.setIsNeedAddress(true);// 返回的定位结果包含地址信息
+        option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度,默认值gcj02
+        option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
+        mLocationClient.setLocOption(option);
+    }
 
-	public class MyLocationListener implements BDLocationListener {
-		@Override
+    public class MyLocationListener implements BDLocationListener {
+        @Override
         public void onReceiveLocation(BDLocation location) {
             if (location == null)
                 return;
@@ -102,26 +89,22 @@ public class BDLocationClient {
                 mLoactionListener.OnUpdateLocation(location.getCity(),
                         location.getAddrStr());
             }
-            //Log.d(GlobalConstants.TAG, "onReceiveLocation " + sb.toString());
-		}
+        }
 
-		public void onReceivePoi(BDLocation poiLocation) {
-            // 将在下个版本中去除poi功能
-		}
-	}
+    }
 
-	/**
-	 * 设置城市和详细地址
-	 * 
-	 * @param listener
-	 */
-	public void setOnLocationListener(OnLocationListener listener) {
-		mLoactionListener = listener;
-	}
+    /**
+     * 设置城市和详细地址
+     *
+     * @param listener
+     */
+    public void setOnLocationListener(OnLocationListener listener) {
+        mLoactionListener = listener;
+    }
 
-	public interface OnLocationListener {
-		public void OnUpdateLocation(String city, String addr);
-	}
+    public interface OnLocationListener {
+        public void OnUpdateLocation(String city, String addr);
+    }
 
 
 }

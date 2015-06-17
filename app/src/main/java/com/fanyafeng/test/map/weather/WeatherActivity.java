@@ -145,16 +145,14 @@ public class WeatherActivity extends Activity implements OnClickListener {
         weatherInfos = weatherHandler.getWeathers();
         WeatherInfo weather = new WeatherInfo();
         weather = weatherInfos.get(0);
-        mIvTemp.setImageBitmap(picNum.getStringPic(getNumberInString(weather
-                .getDate())));
+        mIvTemp.setImageBitmap(picNum.getStringPic(getNumberInString(weather.getDate())));
         mWeather.setText(weather.getWeather() + "  " + weather.getWind());
         mDate.setText(weatherHandler.getDate());
         String date = weather.getDate();
         mWeek.setText(date.substring(0, date.lastIndexOf("(")));
         mTemp.setText(weather.getTemperature());
         if (!_isExe) {
-            SimpleDateFormat sdf = new SimpleDateFormat("HH",
-                    Locale.getDefault());
+            SimpleDateFormat sdf = new SimpleDateFormat("HH",Locale.getDefault());
             String hour = sdf.format(new Date());
             if (Integer.parseInt(hour) > 18 || Integer.parseInt(hour) < 6) {
                 // 晚上
@@ -217,8 +215,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
             }
             try {
                 // 使用HttpURLConnection打开连接
-                HttpURLConnection urlConn = (HttpURLConnection) imageUrl
-                        .openConnection();
+                HttpURLConnection urlConn = (HttpURLConnection) imageUrl.openConnection();
                 urlConn.setDoInput(true);
                 urlConn.connect();
                 // 将得到的数据转化成InputStream
